@@ -1,0 +1,115 @@
+.cv-creator {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  animation: fadeIn 1.5s cubic-bezier(0.2, 0.65, 0.7, 1.3);
+  gap: 40px;
+  padding: 0 30px;
+
+  .form {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    grid-column: 1/3;
+
+    .form-section {
+      .heading {
+        background-image: linear-gradient(45deg, #f3ec78, #af4261);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+      }
+
+      .inputs {
+        display: grid;
+        column-gap: 20px;
+        row-gap: 10px;
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+
+        input {
+          outline: none;
+          border: 1px solid transparent;
+          padding: 10px 15px;
+          border-radius: 5px;
+        }
+
+        input:last-child {
+          grid-column: 1/-1;
+        }
+
+        input:focus {
+          border: 1px solid #f59e0b;
+        }
+      }
+    }
+  }
+
+  .cv-display {
+    grid-column: 3/-1;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    align-items: start;
+    gap: 30px;
+
+    .section-heading {
+      font-size: 1.3em;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #fdba74;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 0.8em;
+    }
+
+    .fullname {
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.87);
+      grid-column: 1/-1;
+      grid-row: 1/1;
+      gap: 5px;
+
+      .firstname {
+        font-weight: 500;
+        font-size: 1.8em;
+      }
+
+      .lastname {
+        font-size: 1.8em;
+        font-weight: 900;
+      }
+    }
+
+    .left-side {
+      grid-column: 1/3;
+      grid-row: 2/-1;
+      display: grid;
+      align-items: center;
+      gap: 25px;
+      padding: 15px;
+    }
+
+    .right-side {
+      padding: 15px;
+      border-left: 1px solid rgba(255, 255, 255, 0.87);
+      grid-column: 3/-1;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

@@ -6,11 +6,23 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
   font-synthesis: none;
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 40px;
+}
+
 .hidden {
+  display: none;
+}
+
+body::-webkit-scrollbar {
   display: none;
 }

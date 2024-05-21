@@ -1,6 +1,6 @@
 import "/src/styles/landing.scss";
 import { useState } from "react";
-// import Form from "./Form";
+import CVcreator from "./CV-creator";
 
 export default function Landing() {
   const [displayForm, setDisplayForm] = useState(false);
@@ -15,7 +15,7 @@ export default function Landing() {
 
   return (
     <>
-      <div className="landing">
+      <div className={!displayForm ? "landing" : "hidden"}>
         <h1
           className={fadeOutAnimated ? "fade-out-top" : ""}
           onAnimationEnd={() => {
@@ -33,13 +33,13 @@ export default function Landing() {
             setFadeOutAnimated(true);
             setTimeout(() => {
               setDisplayForm(true);
-            }, 1000);
+            }, 1500);
           }}
         >
           Get Started
         </button>
       </div>
-      {/* <Form displayForm={displayForm} /> */}
+      <CVcreator displayForm={displayForm} />
     </>
   );
 }
