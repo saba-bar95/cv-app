@@ -3,18 +3,68 @@ import { useState } from "react";
 import "/src/styles/cv-creator.scss";
 
 export default function CVcreator({ displayForm }) {
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState({
+    firstname: "",
+    lastname: "",
+    phone: "",
+    email: "",
+    address: "",
+    profile: "",
+  });
+  const [educations, setEducations] = useState([]);
+
+  if (!displayForm) return null;
 
   const handleInputChange = (event) => {
     const newForm = {
       ...info,
       [event.target.name]: event.target.value,
     };
-
     setInfo(newForm);
   };
 
-  if (!displayForm) return null;
+  const handleEducationChange = (index, event) => {
+    const updatedEducations = educations.map((el) =>
+      el.index === index
+        ? { ...el, [event.target.name]: event.target.value }
+        : el
+    );
+
+    setEducations(updatedEducations);
+  };
+
+  function addEducation() {
+    setEducations([...educations, { school: "", index: Date.now() }]);
+  }
+
+  function removeEducation(id) {
+    setEducations(educations.filter((el) => el.index !== id));
+  }
+
+  console.log(educations);
+
+  function NewEducation(props) {
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="edu"
+          name="school"
+          onChange={(event) => {
+            handleEducationChange(props.index, event);
+          }}
+        />
+        <button
+          onClick={() => {
+            removeEducation(props.index);
+          }}
+        >
+          remove
+        </button>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="cv-creator">
@@ -25,7 +75,6 @@ export default function CVcreator({ displayForm }) {
               <input
                 type="text"
                 name="firstname"
-                className="firstname"
                 placeholder="Firstname"
                 maxLength={15}
                 onChange={(e) => {
@@ -35,7 +84,6 @@ export default function CVcreator({ displayForm }) {
               <input
                 type="text"
                 name="lastname"
-                className="lastname"
                 placeholder="Lastname"
                 maxLength={15}
                 onChange={(e) => {
@@ -46,8 +94,8 @@ export default function CVcreator({ displayForm }) {
               <input
                 type="text"
                 name="phone"
-                className="phone"
                 placeholder="Phone"
+                maxLength={15}
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
@@ -55,7 +103,6 @@ export default function CVcreator({ displayForm }) {
               <input
                 type="email"
                 name="email"
-                className="email"
                 placeholder="Email"
                 maxLength={20}
                 onChange={(e) => {
@@ -65,8 +112,8 @@ export default function CVcreator({ displayForm }) {
               <input
                 type="text"
                 name="address"
-                className="address"
                 placeholder="Address"
+                maxLength={50}
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
@@ -75,17 +122,36 @@ export default function CVcreator({ displayForm }) {
           </div>
           <div className="form-section">
             <h1 className="heading">Profile</h1>
+            <textarea
+              name="profile"
+              placeholder="Some profile"
+              onChange={(e) => {
+                handleInputChange(e);
+              }}
+            ></textarea>
           </div>
           <div className="form-section">
             <h1 className="heading">Education</h1>
+            <button
+              className="add-education"
+              onClick={() => {
+                addEducation();
+              }}
+            >
+              + education
+            </button>
+            <div className="educations-wrapper">
+              {educations.map((el) => {
+                return <NewEducation index={el.index} key={el.index} />;
+              })}
+            </div>
           </div>
           <div className="form-section">
             <h1 className="heading">Work Experience</h1>
+            <button className="add-work-experience" onClick={() => {}}>
+              + work experience
+            </button>
           </div>
-          <div className="form-section">
-            <h1 className="heading">Contact</h1>
-          </div>
-          <form action="" onSubmit={() => {}}></form>
         </div>
         <div className="cv-display">
           <div className="fullname">
@@ -100,61 +166,40 @@ export default function CVcreator({ displayForm }) {
             <div className="profile">
               <h2 className="section-heading">profile</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                tempora ratione enim aliquid. Ut, obcaecati alias quasi
-                veritatis mollitia odit eveniet optio aliquam? Dolor, est?
-                Corporis praesentium cupiditate deleniti necessitatibus!
+                {" "}
+                {info.profile
+                  ? `${info.profile}`
+                  : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illomagnam velit magni natus eveniet eos?"}
               </p>
             </div>
             <div className="contact">
               <h2 className="section-heading">contact</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Provident consectetur quia, deleniti error ducimus autem!
-              </p>
+              <div className="wrapper">
+                <img src="/src/assets/images/call.png" alt="phone" />
+                <p> {info.phone ? `${info.phone}` : "+123123321"}</p>
+              </div>
+              <div className="wrapper">
+                <img src="/src/assets/images/email.png" alt="email" />
+                <p> {info.email ? `${info.email}` : "example@gmail.com"}</p>
+              </div>
+              <div className="wrapper">
+                <img src="/src/assets/images/address.png" alt="address" />
+                <p>
+                  {" "}
+                  {info.address
+                    ? `${info.address}`
+                    : "Name Address 13th Street 47 W 13th St, New York, NY ..."}
+                </p>
+              </div>
             </div>
           </div>
           <div className="right-side">
             <div className="work-experience">
               <h2 className="section-heading">work experience</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                dignissimos provident nesciunt enim excepturi cumque
-                perspiciatis maxime amet accusamus cupiditate.
-              </p>{" "}
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                dignissimos provident nesciunt enim excepturi cumque
-                perspiciatis maxime amet accusamus cupiditate.
-              </p>{" "}
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                dignissimos provident nesciunt enim excepturi cumque
-                perspiciatis maxime amet accusamus cupiditate.
-              </p>
             </div>
             <div className="education">
               <h2 className="section-heading">education</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                dignissimos provident nesciunt enim excepturi cumque
-                perspiciatis maxime amet accusamus cupiditate.
-              </p>{" "}
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                dignissimos provident nesciunt enim excepturi cumque
-                perspiciatis maxime amet accusamus cupiditate.
-              </p>{" "}
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                dignissimos provident nesciunt enim excepturi cumque
-                perspiciatis maxime amet accusamus cupiditate.
-              </p>{" "}
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                dignissimos provident nesciunt enim excepturi cumque
-                perspiciatis maxime amet accusamus cupiditate.
-              </p>
+              <div className="education-wrapper"></div>
             </div>
           </div>
         </div>
