@@ -72,47 +72,60 @@
         align-self: start;
       }
 
-      .educations-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin-top: 20px;
+      .wrapper {
+        color: #fdba74;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+        padding: 10px;
+        color: white;
+        background-color: #334155;
+        border-radius: 10px;
+        color: #f59e0b;
+        font-weight: 700;
+        :hover {
+          cursor: pointer;
+        }
       }
 
-      // .education-wrapper {
-      //   .education {
-      //     display: flex;
-      //     gap: 10px;
-      //     flex-direction: column;
-      //     margin-top: 20px;
+      .education {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        margin-bottom: 15px;
 
-      //     .date-wrapper {
-      //       display: grid;
-      //       grid-template-columns: repeat(2, minmax(50px, 1fr));
-      //       column-gap: 20px;
-      //     }
+        label {
+          font-size: 1.1em;
+          font-weight: 700;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
 
-      //     label {
-      //       font-size: 1.1em;
-      //       font-weight: 700;
-      //     }
+          input {
+            width: 100%;
+          }
+        }
 
-      //     input[type="date"] {
-      //       width: 100%;
-      //       color: #fdba74;
-      //       margin-top: 5px;
-      //     }
+        .date-wrapper {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(50px, 1fr));
+          column-gap: 20px;
 
-      //     .button-wrapper {
-      //       display: flex;
-      //       justify-content: space-between;
+          input[type="date"] {
+            width: 100%;
+            color: #fdba74;
+            margin-top: 5px;
+          }
+        }
 
-      //       .remove-btn {
-      //         background-image: none;
-      //       }
-      //     }
-      //   }
-      // }
+        .button-wrapper {
+          display: flex;
+          gap: 30px;
+
+          button {
+            flex: 1;
+          }
+        }
+      }
     }
   }
 
@@ -123,6 +136,8 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: max-content;
     gap: 30px;
+    position: sticky;
+    top: 0;
 
     .section-heading {
       font-size: 1.3em;
@@ -186,7 +201,52 @@
       grid-template-rows: max-content;
       gap: 30px;
       position: relative;
+      word-break: break-word;
+
+      .education-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+
+        h1 {
+          font-size: 1.1em;
+          font-weight: 800;
+        }
+
+        h2 {
+          font-size: 0.9em;
+          text-align: center;
+        }
+
+        .wrapper {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+
+          .date-wrapper,
+          .location-wrapper {
+            display: flex;
+            align-items: center;
+          }
+
+          .date-wrapper {
+            gap: 5px;
+          }
+
+          .location-wrapper {
+            gap: 10px;
+          }
+        }
+      }
+
+      .education-wrapper:not(:last-child)::after {
+        content: "";
+        background-color: rgba(255, 255, 255, 0.87);
+        height: 1px;
+      }
     }
+
     .right-side::before {
       content: "";
       position: absolute;

@@ -1,6 +1,6 @@
+import CvCreator from "./CvCreator";
 import "/src/styles/landing.scss";
 import { useState } from "react";
-import CVcreator from "./CV-creator";
 
 export default function Landing() {
   const [displayForm, setDisplayForm] = useState(false);
@@ -15,31 +15,35 @@ export default function Landing() {
 
   return (
     <>
-      <div className={!displayForm ? "landing" : "hidden"}>
-        <h1
-          className={fadeOutAnimated ? "fade-out-top" : ""}
-          onAnimationEnd={() => {
-            setColorAnimated(true);
-          }}
-        >
-          <span className={colorAnimated ? "linear-color" : ""}>Transform</span>{" "}
-          your job search with our powerful{" "}
-          <span className={colorAnimated ? "linear-color" : ""}>CV</span>{" "}
-          application
-        </h1>
-        <button
-          className={buttonClassNames()}
-          onClick={() => {
-            setFadeOutAnimated(true);
-            setTimeout(() => {
-              setDisplayForm(true);
-            }, 1500);
-          }}
-        >
-          Get Started
-        </button>
-      </div>
-      <CVcreator displayForm={displayForm} />
+      {displayForm || (
+        <div className={"landing"}>
+          <h1
+            className={fadeOutAnimated ? "fade-out-top" : ""}
+            onAnimationEnd={() => {
+              setColorAnimated(true);
+            }}
+          >
+            <span className={colorAnimated ? "linear-color" : ""}>
+              Transform
+            </span>{" "}
+            your job search with our powerful{" "}
+            <span className={colorAnimated ? "linear-color" : ""}>CV</span>{" "}
+            application
+          </h1>
+          <button
+            className={buttonClassNames()}
+            onClick={() => {
+              setFadeOutAnimated(true);
+              setTimeout(() => {
+                setDisplayForm(true);
+              }, 1500);
+            }}
+          >
+            Get Started
+          </button>
+        </div>
+      )}
+      {displayForm && <CvCreator />}
     </>
   );
 }
