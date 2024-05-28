@@ -18,15 +18,15 @@ export default function DisplayPersonalInfo(props) {
         <div className="contact">
           <h2 className="section-heading">contact</h2>
           <div className="wrapper">
-            <img src="/public/call.png" alt="phone" />
+            <img src="/call.png" alt="phone" />
             <p> {props.info.phone || "+123123321"}</p>
           </div>
           <div className="wrapper">
-            <img src="/public/email.png" alt="email" />
+            <img src="/email.png" alt="email" />
             <p> {props.info.email || "example@gmail.com"}</p>
           </div>
           <div className="wrapper">
-            <img src="/public/address.png" alt="address" />
+            <img src="/address.png" alt="address" />
             <p>
               {" "}
               {props.info.address ||
