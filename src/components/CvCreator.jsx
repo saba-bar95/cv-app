@@ -1,4 +1,3 @@
-// import CvDisplay from "./CvDisplay";
 import { useState } from "react";
 import PersonalInfoForm from "./form/PersonalInfo";
 import DisplayPersonalInfo from "./display/PersonalInfo";
