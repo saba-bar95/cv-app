@@ -1,0 +1,44 @@
+.fullname {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.87);
+  grid-column: 1/-1;
+  gap: 15px;
+
+  .firstname {
+    font-weight: 500;
+    font-size: 1.8em;
+  }
+
+  .lastname {
+    font-size: 1.8em;
+    font-weight: 900;
+  }
+}
+
+.left-side {
+  grid-column: 1/3;
+  display: grid;
+  gap: 30px;
+  grid-template-rows: max-content;
+
+  .contact,
+  .profile {
+    padding: 15px;
+  }
+
+  .contact {
+    .wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+
+      img {
+        width: 20px;
+      }
+    }
+  }
+}

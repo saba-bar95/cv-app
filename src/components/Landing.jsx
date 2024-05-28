@@ -1,5 +1,4 @@
 import CvCreator from "./CvCreator";
-import "/src/styles/landing.scss";
 import { useState } from "react";
 
 export default function Landing() {
