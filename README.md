@@ -10,7 +10,7 @@ Through this project, I was able to enter the realm of React and put my newly le
 
 ### Technologies
 
-- React JSX
+- React JS
 - SCSS
 
 ### Tools
@@ -22,6 +22,6 @@ Through this project, I was able to enter the realm of React and put my newly le
 - Eslint
 - Prettier
 
-## [Live URL]("")
+## [Live URL](https://cv-app-pi.vercel.app/)
 
 ## [Author](https://github.com/saba-bar95)
